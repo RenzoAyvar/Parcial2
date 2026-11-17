@@ -1,0 +1,124 @@
+{
+  "spec": "SPEC-001",
+  "acceptance_criteria": [
+    {
+      "id": "AC-001",
+      "requirement": "Frontend React con secciones Tareas y Proyectos",
+      "tasks": [
+        "T-009",
+        "T-010",
+        "T-011",
+        "T-012",
+        "T-015"
+      ]
+    },
+    {
+      "id": "AC-002",
+      "requirement": "CRUD de tareas desde frontend",
+      "tasks": [
+        "T-001",
+        "T-009",
+        "T-011",
+        "T-015"
+      ]
+    },
+    {
+      "id": "AC-003",
+      "requirement": "CRUD de proyectos desde frontend",
+      "tasks": [
+        "T-004",
+        "T-005",
+        "T-006",
+        "T-007",
+        "T-009",
+        "T-012",
+        "T-015"
+      ]
+    },
+    {
+      "id": "AC-004",
+      "requirement": "Tasks usa FastAPI y PostgreSQL independiente",
+      "tasks": [
+        "T-001",
+        "T-002",
+        "T-021"
+      ]
+    },
+    {
+      "id": "AC-005",
+      "requirement": "Projects usa Express/Mongoose y MongoDB independiente",
+      "tasks": [
+        "T-003",
+        "T-004",
+        "T-005",
+        "T-006",
+        "T-007",
+        "T-008",
+        "T-021"
+      ]
+    },
+    {
+      "id": "AC-006",
+      "requirement": "Endpoints CRUD y health según contrato",
+      "tasks": [
+        "T-001",
+        "T-006"
+      ]
+    },
+    {
+      "id": "AC-007",
+      "requirement": "Validaciones y errores HTTP adecuados",
+      "tasks": [
+        "T-001",
+        "T-005",
+        "T-006",
+        "T-007"
+      ]
+    },
+    {
+      "id": "AC-008",
+      "requirement": "Pruebas automatizadas de servicios y frontend",
+      "tasks": [
+        "T-001",
+        "T-007",
+        "T-015"
+      ]
+    },
+    {
+      "id": "AC-009",
+      "requirement": "Tests y builds en GitHub Actions",
+      "tasks": [
+        "T-017",
+        "T-019"
+      ]
+    },
+    {
+      "id": "AC-010",
+      "requirement": "Dockerfiles e imágenes independientes",
+      "tasks": [
+        "T-002",
+        "T-008",
+        "T-020"
+      ]
+    },
+    {
+      "id": "AC-011",
+      "requirement": "Manifiestos Kubernetes para componentes y bases de datos",
+      "tasks": [
+        "T-021",
+        "T-022",
+        "T-023"
+      ]
+    },
+    {
+      "id": "AC-012",
+      "requirement": "Despliegue EKS con servicios internos ClusterIP y secretos",
+      "tasks": [
+        "T-022",
+        "T-023",
+        "T-024",
+        "T-025"
+      ]
+    }
+  ]
+}

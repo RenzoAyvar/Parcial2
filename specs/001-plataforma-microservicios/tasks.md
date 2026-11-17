@@ -1,0 +1,28 @@
+# Lista de tareas — SPEC-001
+
+- [ ] T-001 Revisar y cerrar CRUD, validaciones y tests de `services/tasks`.
+- [ ] T-002 Crear Dockerfile y `.env.example` de Tasks Service.
+- [ ] T-003 Crear `services/projects/package.json` con scripts de test/start.
+- [ ] T-004 Implementar conexión Mongoose por `MONGODB_URI`.
+- [ ] T-005 Implementar modelo Project y validaciones.
+- [ ] T-006 Implementar health check y endpoints CRUD de Projects.
+- [ ] T-007 Implementar pruebas de Projects con base MongoDB efímera o mocks controlados.
+- [ ] T-008 Crear Dockerfile y `.env.example` de Projects Service.
+- [ ] T-009 Crear clientes API del frontend para tasks y projects.
+- [ ] T-010 Reemplazar login como pantalla principal por el gestor CRUD.
+- [ ] T-011 Implementar vistas y formularios CRUD de tareas.
+- [ ] T-012 Implementar vistas y formularios CRUD de proyectos.
+- [ ] T-013 Configurar proxy de Vite para ambos servicios.
+- [ ] T-014 Configurar Nginx para `/api/tasks/` y `/api/projects/`.
+- [ ] T-015 Añadir/actualizar tests y comprobar build frontend.
+- [ ] T-016 Adaptar `AGENTS.md` al SPEC-001.
+- [ ] T-017 Adaptar quality gates y `harness/scripts/verify.py`.
+- [ ] T-018 Añadir README de arquitectura, ejecución, tests y despliegue.
+- [ ] T-019 Crear workflow GitHub Actions para pruebas y builds.
+- [ ] T-020 Crear y publicar imágenes frontend, tasks y projects en GHCR.
+- [ ] T-021 Crear manifiestos Kubernetes para PostgreSQL y MongoDB.
+- [ ] T-022 Crear manifiestos Kubernetes para los tres componentes.
+- [ ] T-023 Validar YAML y actualizar tags de imágenes.
+- [ ] T-024 Revisar costos y recursos AWS existentes antes del despliegue.
+- [ ] T-025 Desplegar en EKS con aprobación explícita y verificar la aplicación.
+- [ ] T-026 Subir cambios y documentación al repositorio GitHub.
