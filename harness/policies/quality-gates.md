@@ -1,27 +1,36 @@
-# Quality Gates (v1)
+# Quality Gates — SPEC-001
 
-## G0 — Contrato y trazabilidad
-- Deben existir `spec.md`, `plan.md`, `tasks.md`, `contract.md` y trazabilidad AC-001...AC-007.
-- Cada criterio de aceptación debe enlazar a uno o más archivos de prueba existentes.
-- El agente debe leer SPEC antes de programar. Cambios al contrato requieren PR explícito.
+## G0 — SPEC y trazabilidad
+- Existen `spec.md`, `contract.md`, `plan.md`, `tasks.md` y `traceability.json` bajo `specs/001-plataforma-microservicios`.
+- Los 12 criterios AC-001…AC-012 aparecen en la SPEC y tienen referencias a pruebas/evidencia existentes.
+- `python harness/scripts/verify.py --scope spec` valida archivos, IDs y referencias sin requerir servicios externos.
 
-## G1 — Backend
-- Pruebas de integración HTTP con PostgreSQL real: 200, 401 usuario desconocido, 401 contraseña incorrecta, 422 inválidos.
-- Contraseña usando bcrypt; no filtrar `password_hash`; JWT HS256, expiración y secreto de entorno.
-- Pruebas fallidas no se silencian.
+## G1 — Tasks Service
+- `services/tasks` implementa health y CRUD según el contrato, con validación y errores HTTP correctos.
+- `python -m pytest -q` desde `services/tasks` pasa sin exigir PostgreSQL remoto; las pruebas pueden usar SQLite aislado.
+- La configuración de ejecución usa `DATABASE_URL`; no se filtran secretos ni trazas.
 
-## G2 — Frontend
-- Tests Vitest para validaciones, error mapping, navegación, sesión en memoria y tema persistente.
-- `npm run build` exitoso.
-- No se debe llamar al backend con campos inválidos.
+## G2 — Projects Service
+- `services/projects` implementa health y CRUD según el contrato, con validación Mongoose y errores legibles.
+- `npm test` desde `services/projects` pasa con mocks controlados; no exige MongoDB remoto.
+- `MONGODB_URI` se configura por entorno y no se versionan credenciales reales.
 
-## G3 — Integración
-- Pipeline CI ejecuta G0, G1 y G2 en cada PR contra main.
-- Revisar impactos compartidos frontend/backend. PR requiere revisión humana según políticas del repo.
+## G3 — Frontend
+- `npm test` y `npm run build` desde `frontend` pasan.
+- La interfaz permite listar, crear, editar y eliminar tareas y proyectos; los errores son visibles y se confirma antes de eliminar.
+- Vite y Nginx enrutan `/api/tasks` y `/api/projects`. No se implementan login ni JWT.
 
-## G4 — Despliegue
-- Secretos fuera de Git. Imagen publicada en GHCR no equivale a servidor desplegado.
-- Producción requiere servidor preconfigurado, secretos, revisión/aprobación del entorno y despliegue explícito.
+## G4 — Integración y contenedores
+- GitHub Actions ejecuta las pruebas y el build en cada pull request.
+- Existen Dockerfiles independientes para frontend, Tasks y Projects.
+- Las imágenes GHCR se construyen/publican por workflow; publicar una imagen no equivale a desplegar la aplicación.
+
+## G5 — Kubernetes y AWS
+- Existen manifiestos para Tasks, Projects, frontend, PostgreSQL y MongoDB.
+- Servicios y bases de datos son `ClusterIP`; credenciales se proporcionan mediante Secrets, nunca valores reales versionados.
+- No crear recursos AWS con costo ni desplegar en EKS sin revisar recursos/costos existentes y obtener aprobación explícita.
 
 ## Resultados
-APROBADO = comando devuelve 0 y evidencia disponible. RECHAZADO = test fallido. BLOQUEADO = infraestructura/dependencias no disponibles.
+- **APROBADO**: el comando devuelve 0 y la evidencia se conserva en `harness/reports/last-run.json`.
+- **RECHAZADO**: una prueba, build o verificación falla.
+- **BLOQUEADO**: faltan dependencias, credenciales o infraestructura externa.

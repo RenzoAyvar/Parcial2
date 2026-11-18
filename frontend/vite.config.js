@@ -6,8 +6,12 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     proxy: {
-      '/auth': {
-        target: process.env.VITE_PROXY_TARGET || 'http://localhost:8000',
+      '/api/tasks': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+      '/api/projects': {
+        target: 'http://localhost:3000',
         changeOrigin: true,
       },
     },

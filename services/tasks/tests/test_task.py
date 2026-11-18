@@ -97,6 +97,35 @@ def test_create_task_without_title():
     assert response.status_code == 422
 
 
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {"title": ""},
+        {"title": "x" * 151},
+        {"title": "Válida", "description": "x" * 2001},
+    ],
+)
+def test_create_task_rejects_invalid_fields(payload):
+    response = client.post("/api/tasks", json=payload)
+
+    assert response.status_code == 422
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {"title": None},
+        {"description": None},
+        {"completed": None},
+        {"completed": "yes"},
+    ],
+)
+def test_update_task_rejects_invalid_fields(payload):
+    response = client.put("/api/tasks/999", json=payload)
+
+    assert response.status_code == 422
+
+
 def test_not_found():
     response = client.get("/api/tasks/999")
     assert response.status_code == 404

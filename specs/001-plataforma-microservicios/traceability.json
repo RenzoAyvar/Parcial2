@@ -4,6 +4,9 @@
     {
       "id": "AC-001",
       "requirement": "Frontend React con secciones Tareas y Proyectos",
+      "tests": [
+        "frontend/src/App.test.jsx"
+      ],
       "tasks": [
         "T-009",
         "T-010",
@@ -15,6 +18,10 @@
     {
       "id": "AC-002",
       "requirement": "CRUD de tareas desde frontend",
+      "tests": [
+        "frontend/src/components/TaskManager.test.jsx",
+        "services/tasks/tests/test_task.py"
+      ],
       "tasks": [
         "T-001",
         "T-009",
@@ -25,6 +32,11 @@
     {
       "id": "AC-003",
       "requirement": "CRUD de proyectos desde frontend",
+      "tests": [
+        "frontend/src/components/ProjectManager.test.jsx",
+        "services/projects/tests/projects.test.js",
+        "services/projects/tests/project-model.test.js"
+      ],
       "tasks": [
         "T-004",
         "T-005",
@@ -38,6 +50,10 @@
     {
       "id": "AC-004",
       "requirement": "Tasks usa FastAPI y PostgreSQL independiente",
+      "tests": [
+        "services/tasks/tests/test_task.py",
+        "harness/scripts/verify.py"
+      ],
       "tasks": [
         "T-001",
         "T-002",
@@ -47,6 +63,11 @@
     {
       "id": "AC-005",
       "requirement": "Projects usa Express/Mongoose y MongoDB independiente",
+      "tests": [
+        "services/projects/tests/projects.test.js",
+        "services/projects/tests/project-model.test.js",
+        "harness/scripts/verify.py"
+      ],
       "tasks": [
         "T-003",
         "T-004",
@@ -60,6 +81,10 @@
     {
       "id": "AC-006",
       "requirement": "Endpoints CRUD y health según contrato",
+      "tests": [
+        "services/tasks/tests/test_task.py",
+        "services/projects/tests/projects.test.js"
+      ],
       "tasks": [
         "T-001",
         "T-006"
@@ -68,6 +93,11 @@
     {
       "id": "AC-007",
       "requirement": "Validaciones y errores HTTP adecuados",
+      "tests": [
+        "services/tasks/tests/test_task.py",
+        "services/projects/tests/projects.test.js",
+        "services/projects/tests/project-model.test.js"
+      ],
       "tasks": [
         "T-001",
         "T-005",
@@ -78,6 +108,13 @@
     {
       "id": "AC-008",
       "requirement": "Pruebas automatizadas de servicios y frontend",
+      "tests": [
+        "services/tasks/tests/test_task.py",
+        "services/projects/tests/projects.test.js",
+        "frontend/src/App.test.jsx",
+        "frontend/src/components/TaskManager.test.jsx",
+        "frontend/src/components/ProjectManager.test.jsx"
+      ],
       "tasks": [
         "T-001",
         "T-007",
@@ -87,6 +124,9 @@
     {
       "id": "AC-009",
       "requirement": "Tests y builds en GitHub Actions",
+      "tests": [
+        ".github/workflows/ci.yml"
+      ],
       "tasks": [
         "T-017",
         "T-019"
@@ -95,6 +135,9 @@
     {
       "id": "AC-010",
       "requirement": "Dockerfiles e imágenes independientes",
+      "tests": [
+        "harness/scripts/verify.py"
+      ],
       "tasks": [
         "T-002",
         "T-008",
@@ -104,6 +147,9 @@
     {
       "id": "AC-011",
       "requirement": "Manifiestos Kubernetes para componentes y bases de datos",
+      "tests": [
+        "harness/scripts/verify.py"
+      ],
       "tasks": [
         "T-021",
         "T-022",
@@ -113,6 +159,9 @@
     {
       "id": "AC-012",
       "requirement": "Despliegue EKS con servicios internos ClusterIP y secretos",
+      "tests": [
+        "harness/scripts/verify.py"
+      ],
       "tasks": [
         "T-022",
         "T-023",
